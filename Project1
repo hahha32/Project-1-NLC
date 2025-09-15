@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animal Grid</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 120px);
+      gap: 20px;
+    }
+    .box {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border-radius: 10px;
+      background: black; 
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="box" data-emoji="🐶"></div>
+    <div class="box" data-emoji="🐱"></div>
+    <div class="box" data-emoji="🐵"></div>
+    <div class="box" data-emoji="🐸"></div>
+    <div class="box" data-emoji="🐼"></div>
+    <div class="box" data-emoji="🐷"></div>
+    <div class="box" data-emoji="🦊"></div>
+    <div class="box" data-emoji="🐻"></div>
+    <div class="box" data-emoji="🐯"></div>
+  </div>
+
+  <script>
+    function SuiJi() {
+      return `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`;
+    } //this I searched up
+
+    document.querySelectorAll(".box").forEach(box => {
+      let toggled = true; // default: black & hidden
+      const emoji = box.dataset.emoji;
+
+      box.addEventListener("click", () => {
+        if (toggled) {
+          box.style.background = SuiJi();
+          box.textContent = emoji;
+        } else {
+          box.style.background = "black";
+          box.textContent = "";
+        }
+        toggled = !toggled;
+      });
+    });
+  </script>
+</body>
+</html>
